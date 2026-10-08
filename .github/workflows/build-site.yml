@@ -2,7 +2,7 @@ name: Build site (extract bundle + Commons photos)
 on:
   push:
     branches: [main]
-    paths: ['bundle/**', '.github/workflows/build-site.yml']
+    paths: ['bundle/READY']
   workflow_dispatch:
 permissions:
   contents: write
@@ -14,13 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Extract site bundle
+        with:
+          fetch-depth: 0
+      - name: Extract site bundle (sha256 dicek)
         run: |
-          if [ -d bundle ]; then
+          if [ -f bundle/READY ]; then
             cat bundle/site.b64.* | base64 -d > site.tar.xz
+            echo "$(tr -d ' \n\r' < bundle/READY)  site.tar.xz" | sha256sum -c -
             python3 -c "import lzma,tarfile;tarfile.open(fileobj=lzma.open('site.tar.xz')).extractall('.')"
             rm -rf bundle site.tar.xz
           fi
+          if [ -f _post.py ]; then python3 _post.py && rm -f _post.py; fi
           ls -la
       - name: Download Commons photos (max 1024 px)
         run: |
@@ -35,3 +39,5 @@ jobs:
           git add -A
           git diff --cached --quiet || git commit -m "Build site: extract bundle + Commons photos (max 1024px)"
           git push
+      - name: Update gh-pages (live site) to the same commit
+        run: git push origin HEAD:gh-pages

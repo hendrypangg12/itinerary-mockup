@@ -15,3 +15,8 @@ document.querySelectorAll('.kul').forEach(function(k){
     none.style.display=shown?'none':'block';
   });});
 });
+// Format ringkas: buka <details> otomatis bila link #anchor menunjuk ke isi yang tersembunyi
+function openFor(h){if(!h||h.length<2)return;var t;try{t=document.querySelector(h)}catch(e){return}if(!t)return;
+  var d=t.closest('details');if(d)d.open=true;var c=t.querySelector(':scope > details');if(c)c.open=true;}
+window.addEventListener('hashchange',function(){openFor(location.hash)});openFor(location.hash);
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){openFor(a.getAttribute('href'))})});

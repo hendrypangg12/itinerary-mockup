@@ -85,3 +85,22 @@ a{color:#1e40af}
 .knote{font-size:11px;color:#9a3412;background:#fff7ed;border-radius:8px;padding:5px 8px;margin:6px 0}
 .hero.kl{background:linear-gradient(135deg,#0b3d91 0%,#1d4ed8 55%,#c8102e 100%)}
 .tk-x b{font-weight:700}
+/* ===== Format ringkas: kartu per hari + "Selengkapnya" ===== */
+.ring{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid #eef2f7}
+.ring li{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.4;padding:7px 0;border-bottom:1px solid #f1f5f9;color:#374151}
+.ring li:last-child{border-bottom:0;padding-bottom:0}.ring .ri{flex:0 0 20px;text-align:center}.ring b{color:#1e3a8a;margin-right:3px}
+details.more{margin-top:8px}
+details.more>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px;background:#e0e7ff;color:#1e3a8a;font-weight:700;font-size:12.5px;border-radius:12px;padding:10px 14px;-webkit-tap-highlight-color:transparent}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"▾";font-size:14px;transition:transform .2s}
+details.more[open]>summary::after{transform:rotate(180deg)}
+details.more[open]>summary{background:#c7d2fe}
+details.more>.more-body{padding-top:2px}
+details.hero-more{margin-top:10px}details.hero-more>summary{background:rgba(255,255,255,.16);color:#fff;font-size:12px;padding:8px 12px}
+details.hero-more[open]>summary{background:rgba(255,255,255,.24)}details.hero-more .hotel{margin-top:6px}
+details.card-more{margin:10px 0 0}details.card-more>.card,details.card-more>div{margin-top:8px}
+.foot details.card-more>summary{background:#fff;color:#374151;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.pgal{margin-top:10px;border-top:1px solid #eef2f7;padding-top:10px}
+.pgal-t{font-size:12.5px;font-weight:800;color:#1e3a8a;margin-bottom:6px;display:flex;justify-content:space-between;align-items:baseline}.pgal-t span{font-size:10.5px;font-weight:600;color:#94a3b8}
+.pg{margin-top:8px}.pgh{font-size:12.5px;font-weight:700;color:#334155;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}.pgh span{font-size:10.5px;font-weight:600;color:#64748b;background:#f1f5f9;border-radius:999px;padding:1px 8px}
+.pgc{border-radius:12px;overflow:hidden;background:#e2e8f0}.pgc .slide img{height:190px}
